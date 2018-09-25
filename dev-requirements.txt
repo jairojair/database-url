@@ -1,0 +1,4 @@
+pytest-cov
+pycodestyle
+black
+twine
