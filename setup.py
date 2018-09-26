@@ -1,9 +1,24 @@
+import os
+import re
+
 from setuptools import find_packages, setup
+
+
+def get_version(package):
+    """
+    Return package version as listed in `__version__` in `init.py`.
+    """
+    init_py = open(os.path.join(package, "__init__.py")).read()
+    return re.search("__version__ = ['\"]([^'\"]+)['\"]", init_py).group(1)
+
+
+version = get_version("py_database_url")
+
 
 setup(
     name="py-database-url",
     description="A universal database URLs for Python applications.",
-    version="0.0.2",
+    version=version,
     url="https://github.com/jairojair/py-database-url",
     license="MIT",
     author="Jairo Jair",

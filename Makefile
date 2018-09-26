@@ -8,7 +8,7 @@ clean:
 	@rm -rf "py_database_url.egg-info"
 
 tests: clean fmt lint
-	@PYTHONPATH=py_database_url pytest --cov=py_database_url tests/
+	@pytest --cov=py_database_url
 
 lint:
 	@pycodestyle --ignore=E501 .

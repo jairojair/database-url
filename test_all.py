@@ -1,11 +1,11 @@
-import pytest
-
-from py_database_url import config
+from py_database_url import parse, orator
 
 
-def test_config_without_url():
-
-    assert config.parse() is None
+def test_parse_database_url_wrong():
+    """
+    Describe
+    """
+    pass
 
 
 def test_parse_database_url():
@@ -15,7 +15,7 @@ def test_parse_database_url():
 
     url = "postgres://user:password@hostname:5432/db-name"
 
-    ret = config.parse(url)
+    ret = parse(url)
 
     assert ret.username == "user"
     assert ret.password == "password"
@@ -36,4 +36,4 @@ def test_config_database_url_orator():
         }
     }
 
-    assert config.orator == expected
+    assert orator() == expected
