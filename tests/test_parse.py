@@ -1,11 +1,11 @@
 import pytest
 
-from py_database_url import parse
+from py_database_url import config
 
 
-def test_parse_without_url():
+def test_config_without_url():
 
-    assert parse() is None
+    assert config.parse() is None
 
 
 def test_parse_database_url():
@@ -13,11 +13,27 @@ def test_parse_database_url():
     Describe
     """
 
-    url = "postgres://user:password@hostname:5432/database-name"
+    url = "postgres://user:password@hostname:5432/db-name"
 
-    config = parse(url)
+    ret = config.parse(url)
 
-    assert config.username == "user"
-    assert config.password == "password"
-    assert config.hostname == "hostname"
-    assert config.port == 5432
+    assert ret.username == "user"
+    assert ret.password == "password"
+    assert ret.hostname == "hostname"
+    assert ret.port == 5432
+
+
+def test_config_database_url_orator():
+
+    expected = {
+        "postgres": {
+            "database": "database-name",
+            "driver": "postgres",
+            "host": "hostname",
+            "user": "user",
+            "password": "password",
+            "prefix": "",
+        }
+    }
+
+    assert config.orator == expected

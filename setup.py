@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="py-database-url",
-    description="A universal database URLS parser for Python.",
+    description="A universal database URLs for Python applications.",
     version="0.0.2",
     url="https://github.com/jairojair/py-database-url",
     license="MIT",

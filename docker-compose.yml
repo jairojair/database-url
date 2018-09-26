@@ -8,3 +8,6 @@ services:
       - .:/code
 
     working_dir: /code
+
+    environment:
+      - DATABASE_URL=postgres://user:password@hostname:5432/database-name
